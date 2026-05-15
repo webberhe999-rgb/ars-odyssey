@@ -1,0 +1,40 @@
+package com.example.ars_odyssey.knowledge.discovery;
+
+public enum GlyphEffectCategory {
+    ENTITY_DIRECT_DAMAGE,
+    ENTITY_INDIRECT_DAMAGE,
+    ENTITY_HEAL,
+
+    ENTITY_STATUS_CONTROL,
+    ENTITY_STATUS_BUFF,
+    ENTITY_STATUS_DEBUFF,
+    ENTITY_STATUS_CLEANSE,
+
+    ENTITY_MOTION,
+    ENTITY_TELEPORT,
+
+    ENTITY_SUMMON,
+    ENTITY_TRANSFORM,
+    // 召唤体/投射物造成的延迟伤害，不在 Pre/Post 同步窗口内可观察
+    ENTITY_DELAYED_DAMAGE,
+
+    BLOCK_BREAK,
+    BLOCK_HARVEST,
+    BLOCK_GROWTH,
+    BLOCK_TRANSFORM,
+    BLOCK_PLACE,
+    BLOCK_SUMMON,
+
+    ITEM_COLLECT,
+    ITEM_TRANSFORM,
+    RESOURCE_TRANSFORM,
+    PRODUCE,
+
+    DEFENSE,
+    UTILITY,
+
+    UNKNOWN_ENTITY,
+    UNKNOWN_BLOCK,
+    UNKNOWN_ITEM,
+    UNKNOWN
+}

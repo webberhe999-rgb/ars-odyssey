@@ -1,0 +1,343 @@
+Ars Odyssey Current System Summary
+==================================
+
+1. Current project overview
+---------------------------
+
+Mod id:
+- ars_odyssey
+
+Versions:
+- Minecraft: 1.21.1
+- NeoForge: 21.1.66
+- Ars Nouveau: 5.3.6.856
+
+Odyssey Spell Book registration:
+- Registered in com.example.ars_odyssey.registry.ModRegistry.
+- Registry name: ars_odyssey:odyssey_spell_book.
+- Deferred holder: ModRegistry.ODYSSEY_SPELL_BOOK.
+- Item class: com.example.ars_odyssey.item.OdysseySpellBook.
+- Current tier: SpellTier.CREATIVE.
+- Added to the Ars Odyssey creative tab registered as ars_odyssey:ars_odyssey_tab.
+
+How Odyssey Spell Book opens the original GuiSpellBook:
+- OdysseySpellBook extends Ars Nouveau SpellBook.
+- OdysseySpellBook overrides onOpenBookMenuKeyPressed.
+- It gets the book hand through StackUtil.getBookHand(player).
+- It opens the original Ars Nouveau GUI with:
+  Minecraft.getInstance().setScreen(new GuiSpellBook(hand));
+- The goal is still to reuse the original Ars Nouveau spell book GUI, not replace it.
+
+Current GuiSpellBook Mixin hooks:
+- com.example.ars_odyssey.mixin.GuiSpellBookMixin targets com.hollingsworth.arsnouveau.client.gui.book.GuiSpellBook.
+- Injects onSearchChanged at HEAD, cancellable.
+  - Only runs custom search when bookStack is ModRegistry.ODYSSEY_SPELL_BOOK.
+  - Non-Odyssey Ars Nouveau books keep original search behavior.
+  - Calls GlyphApplicationIndex.searchWithReasons(query, unlockedSpells).
+  - Updates displayedGlyphs, page buttons, page number, and glyph layout.
+- Injects collectTooltips at TAIL.
+  - Only runs for Odyssey Spell Book.
+  - If hovering a GlyphButton, appends Ars Odyssey match reasons.
+  - Shows up to 3 reasons.
+- Uses @Invoker for GuiSpellBook.layoutAllGlyphs and GuiSpellBook.validate.
+
+2. Current core packages and classes
+------------------------------------
+
+com.example.ars_odyssey.index.*
+- GlyphApplicationIndex:
+  Main runtime search/index entry point for Odyssey glyph target search.
+- GlyphTargetRule:
+  Manual rule data model for glyph target matchers.
+- TargetQuery:
+  Parsed player search query: item/block/entity/tag data plus derived matchers.
+- MatchReason:
+  Tooltip/search reason data. Includes glyph id, matcher, blacklist flag, display key, and rule source.
+- MatcherPresentation:
+  Converts matcher types into tooltip roles, evidence levels, and translation keys.
+- GlyphDebugIndex:
+  Debug printer for all Ars Nouveau glyphs and current target rules.
+- GlyphRuleCandidate:
+  Candidate matcher extracted from Ars Nouveau source scan.
+- CandidateRuleExtractor:
+  Text/signal based extractor for EffectXXX source files.
+- AutoGlyphRuleIndex:
+  Builds safe auto rules from CandidateRuleExtractor output.
+
+com.example.ars_odyssey.knowledge.*
+- RelationType:
+  Knowledge relation type enum.
+- TargetKind:
+  Target descriptor kind enum.
+- TargetDescriptor:
+  Lightweight descriptor for block/item/entity/tag/behavior/position targets.
+- GlyphRelation:
+  Knowledge relation between a glyph and a target, optionally with a result.
+- TruthDelta:
+  Amount of Truth gained and reason key.
+- PlayerKnowledgeData:
+  Temporary non-persistent data holder for Truth Value and discovered relations.
+- KnowledgeApi:
+  API shell for future discovery and Truth operations.
+
+com.example.ars_odyssey.mixin.*
+- GuiSpellBookMixin:
+  Odyssey-only search replacement and tooltip reason append hook.
+
+com.example.ars_odyssey.item.*
+- OdysseySpellBook:
+  SpellBook subclass that opens the original GuiSpellBook.
+- ExampleCosmetic:
+  Existing example/test item from the template.
+
+com.example.ars_odyssey.registry.*
+- ModRegistry:
+  DeferredRegister setup for items, blocks, sounds, creative tabs.
+  Registers Odyssey Spell Book and example/template content.
+
+3. GlyphApplicationIndex current rule system
+--------------------------------------------
+
+Manual rules:
+- Stored directly in GlyphApplicationIndex.RULES.
+- These are hand-written GlyphTargetRule entries.
+- They cover the first batch of Ars Nouveau effect glyphs such as:
+  glyph_harm, glyph_heal, glyph_ignite, glyph_freeze, glyph_break,
+  glyph_crush, glyph_smelt, glyph_exchange, glyph_place_block,
+  glyph_pickup, glyph_grow, glyph_harvest, glyph_blink,
+  glyph_bounce, glyph_animate_block.
+- Manual rules are currently trusted more than auto rules.
+
+Auto rules:
+- Built by AutoGlyphRuleIndex.
+- AutoGlyphRuleIndex calls CandidateRuleExtractor.extractFromSourceDirectory.
+- It scans Ars Nouveau EffectXXX source files from the extracted source root when available.
+- It only allows candidate rules with:
+  confidence = HIGH
+  polarity = POSITIVE
+- HIGH + NEGATIVE candidates become limitation data only.
+- MEDIUM, LOW, and UNKNOWN candidates do not enter runtime search.
+- If a glyph/type/value matcher already exists in manual rules, the auto matcher is filtered out to avoid duplicates.
+
+CandidateRuleExtractor:
+- Looks for source signals such as:
+  onResolveEntity, onResolveBlock, instanceof checks, state.is, stack.is,
+  entity.getType().is, BoneMealItem calls, recipe checks, BlockUtil checks,
+  EnchantedFallingBlock.canFall, teleportTo, and isValidTeleport.
+- It is useful, but not a full Java semantic analyzer.
+- Auto candidates still need human review before being treated as fully trusted design.
+
+BLACKLIST / DENY handling:
+- BLACKLIST and DENY_ENTITY_TYPE_TAG do not create positive search results.
+- If only a blacklist/deny matcher hits, the glyph is not returned.
+- If a glyph has both a positive match and a blacklist/deny match, the glyph can still be returned for now, and the limitation can be shown in tooltip.
+- This is intended for later UI warnings such as "not applicable to X".
+
+GENERAL_ENTITY / GENERAL_BLOCK handling:
+- GENERAL_ENTITY matches when TargetQuery resolves an entity type, or derivedMatchers contains entity_class:Entity.
+- GENERAL_BLOCK matches when TargetQuery resolves a block, or the resolved item is a BlockItem.
+- These are broad and useful, but they can make search intentionally wide.
+
+TargetQuery parsing:
+- Raw search text is normalized to lowercase and trimmed.
+- A leading # means explicit tag query.
+- IDs without namespace default to minecraft:<query>.
+- Tries to resolve:
+  BuiltInRegistries.ITEM
+  BuiltInRegistries.BLOCK
+  BuiltInRegistries.ENTITY_TYPE
+- Also tries display-name fallback for item/block/entity names.
+- If item is found, item tags are collected.
+- If block is found, block tags are collected.
+- If entity type is found, entity type tags are collected.
+- If item is a BlockItem, corresponding block tags and block derived matchers are also collected.
+- Derived matchers currently include examples like:
+  item_is_block_item
+  block_class:CropBlock
+  block_class:NetherWartBlock
+  block_class:CocoaBlock
+  entity_class:LivingEntity
+  entity_class:Entity
+
+4. Matcher / reason / tooltip design
+------------------------------------
+
+MatcherType:
+- BLOCK_TAG
+- ITEM_TAG
+- ENTITY_TYPE_TAG
+- BLOCK_CLASS
+- ENTITY_CLASS
+- BEHAVIOR
+- DENY_ENTITY_TYPE_TAG
+- POSITION_PREDICATE
+- GENERAL_ENTITY
+- GENERAL_BLOCK
+- INDEXED_TAG
+- BLACKLIST
+
+EvidenceLevel:
+- CODE_CONFIRMED
+- RUNTIME_CHECK
+- INDEX_HELPER
+- INFERRED
+- LIMITATION
+- AUTO_SOURCE_SCAN
+
+TooltipRole:
+- REASON
+- CONDITION
+- LIMIT
+
+MatcherPresentation responsibilities:
+- Infer EvidenceLevel from a TargetMatcher.
+- Infer TooltipRole from a TargetMatcher.
+- Build translation keys for matcher values.
+- Provide raw fallback display values when no localization key exists.
+
+MatchReason fields:
+- ResourceLocation glyphId
+- GlyphTargetRule.TargetMatcher matcher
+- boolean blacklist
+- String displayKey
+- RuleSource source
+
+RuleSource:
+- MANUAL:
+  Reason came from a hand-written GlyphApplicationIndex rule.
+- AUTO:
+  Reason came from AutoGlyphRuleIndex / CandidateRuleExtractor.
+  Tooltip evidence displays as "Auto source scan" / "自动源码分析".
+
+Tooltip status:
+- Tooltip is already connected.
+- It is connected in GuiSpellBookMixin.collectTooltips at TAIL.
+- It only affects Odyssey Spell Book.
+- Non-Odyssey Ars Nouveau books do not show Ars Odyssey tooltip lines.
+
+5. Knowledge System current skeleton
+------------------------------------
+
+RelationType:
+- APPLIES_TO
+- CONDITION
+- PRODUCES
+- LIMITATION
+- RELATED
+
+TargetKind:
+- BLOCK
+- ITEM
+- ENTITY_TYPE
+- BLOCK_TAG
+- ITEM_TAG
+- ENTITY_TYPE_TAG
+- BEHAVIOR
+- POSITION
+- UNKNOWN
+
+TargetDescriptor:
+- record TargetDescriptor(TargetKind kind, ResourceLocation id, String detail)
+- Static helpers exist for block, item, entityType, blockTag, itemTag,
+  entityTypeTag, behavior, position, and unknown.
+- detail is for non-ResourceLocation data like LivingEntity or bonemealable.
+
+GlyphRelation:
+- record GlyphRelation(ResourceLocation glyphId, RelationType relationType,
+  TargetDescriptor target, Optional<TargetDescriptor> result, String evidenceKey)
+- result is intended for PRODUCES relations, such as Freeze producing obsidian/cobblestone.
+- evidenceKey is intended for future localized explanations such as source_scan,
+  runtime_check, or player_discovery.
+
+TruthDelta:
+- record TruthDelta(int amount, String reasonKey)
+
+PlayerKnowledgeData:
+- Plain Java class.
+- Holds int truthValue.
+- Holds Set<GlyphRelation> discoveredRelations.
+- discover(relation, delta) adds Truth only once per relation.
+
+KnowledgeApi:
+- Static API shell.
+- Currently works only with a passed PlayerKnowledgeData instance.
+- Throws UnsupportedOperationException if no data object is provided.
+- Contains the future API surface:
+  onGlyphRelationDiscovered
+  getTruthValue
+  hasDiscovered
+  addTruth
+
+Knowledge System status:
+- Skeleton only.
+- Not connected to capability or player persistent data.
+- Not connected to GUI.
+- Not connected to Mixin.
+- Not connected to search.
+- No NBT, Codec, or network sync yet.
+
+6. Current design philosophy
+----------------------------
+
+Core idea:
+- Knowledge is magic.
+
+Search system direction:
+- The current search/index system is a stepping stone.
+- It should evolve into a Glyph Knowledge Index.
+- The long-term system should know not only what a glyph applies to, but also:
+  APPLIES_TO
+  CONDITION
+  PRODUCES
+  LIMITATION
+  RELATED
+
+Important semantic note:
+- Cases like stone -> Freeze should not simply be deleted from the concept space.
+- Stone/cobblestone/obsidian may be related to Freeze as PRODUCES or RELATED.
+- They should not automatically mean APPLIES_TO.
+- This distinction is the reason GlyphRelation exists separately from simple search matchers.
+
+Truth Value:
+- Future Truth Value belongs to the player.
+- Players should gain Truth by experimenting with glyphs on blocks/entities/items/states.
+- First version can unlock knowledge through glyph + target + rule match.
+- Later versions should verify actual world/entity state changes before unlocking knowledge.
+
+7. Current non-goals / not done yet
+----------------------------------
+
+- Player data persistence is not implemented.
+- Capability or attachment storage is not implemented.
+- Truth Value is not displayed.
+- Spell book upper-left Truth UI is not implemented.
+- Casting-based relation discovery is not implemented.
+- Actual runtime world/entity state verification is not implemented.
+- JEI integration is not implemented.
+- JSON knowledge database is not implemented.
+- Automatic candidate rules are not fully trustworthy.
+- CandidateRuleExtractor is signal based, not a complete source-code understanding system.
+
+8. Recently verified commands
+-----------------------------
+
+compileJava:
+- Command:
+  .\Ars-Nouveau-Example-Addon\gradlew.bat compileJava -p .\Ars-Nouveau-Example-Addon
+- Result:
+  BUILD SUCCESSFUL
+
+runClient:
+- Command:
+  .\Ars-Nouveau-Example-Addon\gradlew.bat runClient -p .\Ars-Nouveau-Example-Addon
+- Result:
+  BUILD SUCCESSFUL
+
+9. Suggested next steps
+-----------------------
+
+1. Commit the current code.
+2. Design the mapping from existing GlyphApplicationIndex rules to GlyphRelation.
+3. Add Truth storage for player data.
+4. Display Truth Value in the upper-left of the Odyssey Spell Book.
+5. Connect casting events to relation discovery.

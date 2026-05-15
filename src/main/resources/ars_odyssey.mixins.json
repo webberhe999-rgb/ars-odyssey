@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "com.example.ars_odyssey.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "ars_odyssey.refmap.json",
+  "mixins": [],
+  "client": [
+    "GuiSpellBookMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,482 @@
+# Ars Odyssey Pinyin Table
+# Format: char=pinyin (without tone marks)
+# Covers vanilla Minecraft entity/block/item Chinese names + Ars Nouveau glyph names
+# Loaded by ChineseSearchNormalizer on startup.
+# Lines starting with '#' or blank lines are ignored.
+
+# ── Vanilla MC Entities ─────────────────────────────────────────────────────
+
+# 洞穴蜘蛛 cave spider
+洞=dong
+穴=xue
+
+# 末影人/末影龙/末影猫  enderman / ender dragon / endermite
+末=mo
+影=ying
+龙=long
+人=ren
+
+# 恼鬼  vex
+恼=nao
+鬼=gui
+
+# 幻翼  phantom
+幻=huan
+翼=yi
+
+# 烈焰人  blaze
+烈=lie
+焰=yan
+
+# 凋灵/凋灵骷髅  wither / wither skeleton
+凋=diao
+灵=ling
+
+# 流浪者  stray
+流=liu
+浪=lang
+者=zhe
+
+# 尸壳  husk
+壳=ke
+
+# 溺尸  drowned
+溺=ni
+
+# 卫道士  vindicator
+卫=wei
+道=dao
+士=shi
+
+# 唤魔者  evoker
+魔=mo
+
+# 劫掠兽  ravager
+劫=jie
+掠=lve
+兽=shou
+
+# 劫持者  pillager
+持=chi
+
+# 守卫者 / 远古守卫者  guardian / elder guardian
+守=shou
+远=yuan
+古=gu
+
+# 女巫  witch
+女=nv
+巫=wu
+
+# 铁傀儡 / 雪傀儡  iron golem / snow golem
+铁=tie
+傀=kui
+儡=lei
+
+# 北极熊  polar bear
+北=bei
+极=ji
+熊=xiong
+
+# 鹦鹉  parrot
+鹦=ying
+鹉=wu
+
+# 海豚  dolphin
+海=hai
+豚=tun
+
+# 鱿鱼 / 发光鱿鱼  squid / glow squid
+鱿=you
+鱼=yu
+发=fa
+光=guang
+
+# 蜜蜂  bee
+蜜=mi
+蜂=feng
+
+# 山羊  goat
+山=shan
+
+# 猫 / 豹猫  cat / ocelot
+猫=mao
+豹=bao
+
+# 狐狸  fox
+狐=hu
+狸=li
+
+# 兔子  rabbit
+兔=tu
+子=zi
+
+# 熊猫  panda
+# 熊 already listed above
+
+# 驴  donkey
+驴=lv
+
+# 骡子  mule
+骡=luo
+
+# 骆驼  camel
+骆=luo
+驼=tuo
+
+# 驼鹿  moose / elk (unused in vanilla but common mod entity)
+鹿=lu
+
+# 羊驼  llama
+# 羊 already in hardcoded table
+
+# 青蛙  frog
+青=qing
+蛙=wa
+
+# 蝌蚪  tadpole
+蝌=ke
+蚪=dou
+
+# 监守者  warden
+监=jian
+
+# 嗅探兽  sniffer
+嗅=xiu
+探=tan
+
+# 蝙蝠  bat
+蝙=bian
+蝠=fu
+
+# 热带鱼  tropical fish
+热=re
+带=dai
+
+# 河豚  pufferfish
+河=he
+
+# 美西螈  axolotl
+美=mei
+西=xi
+螈=yuan
+
+# 蠹鱼  silverfish
+蠹=du
+
+# 幽灵猫  ocelot (older naming)
+幽=you
+
+# 猪灵 / 猪灵蛮兵  piglin / piglin brute
+# 猪 already in hardcoded table
+蛮=man
+兵=bing
+
+# 亡灵 (undead category)
+亡=wang
+
+# 流浪商人 / 行商羊驼  wandering trader / trader llama
+旅=lv
+商=shang
+行=xing
+
+# 蜘蛛骑士  spider jockey (uses 骑 and 士)
+骑=qi
+
+# 岩浆怪  magma cube
+怪=guai
+
+# 雪球  snowball / various projectiles
+球=qiu
+
+# 冬雪 (mod entities)
+冬=dong
+雪=xue
+
+# ── Common Item/Block Characters ────────────────────────────────────────────
+
+# 钻石  diamond
+钻=zuan
+
+# 金  gold
+金=jin
+
+# 铜  copper
+铜=tong
+
+# 红石  redstone
+红=hong
+
+# 箱子  chest
+箱=xiang
+
+# 熔炉  furnace
+熔=rong
+炉=lu
+
+# 床  bed
+床=chuang
+
+# 门  door
+门=men
+
+# 窗  window (rarely searched but included)
+窗=chuang
+
+# 梯子  ladder
+梯=ti
+
+# 栅栏  fence
+栅=zha
+栏=lan
+
+# 台阶  slab / step
+台=tai
+阶=jie
+
+# 楼梯  stair
+楼=lou
+
+# 漏斗  hopper
+漏=lou
+斗=dou
+
+# 比较器 / 中继器  comparator / repeater
+比=bi
+较=jiao
+中=zhong
+继=ji
+器=qi
+
+# 烟花  firework
+烟=yan
+
+# 花  flower
+花=hua
+
+# 板  plank / slab
+板=ban
+
+# 剑  sword
+剑=jian
+
+# 弓  bow
+弓=gong
+
+# 弩  crossbow
+弩=nu
+
+# 盾  shield
+盾=dun
+
+# 盔甲  armor
+盔=kui
+甲=jia
+
+# 靴子  boots (靴 same pinyin as 穴 — intentional, both map to xue)
+靴=xue
+
+# 护腿  leggings
+护=hu
+腿=tui
+
+# 胸甲  chestplate
+胸=xiong
+
+# 头盔  helmet
+帽=mao
+
+# 地  ground/land
+地=di
+
+# ── Ars Nouveau Glyph Name Characters ───────────────────────────────────────
+
+# 尖刺  fangs
+尖=jian
+刺=ci
+
+# 点燃  ignite
+点=dian
+燃=ran
+
+# 冷冻  freeze
+冷=leng
+冻=dong
+
+# 推动 / 拉拽  launch / pull
+推=tui
+拉=la
+拽=zhuai
+
+# 爆炸  explosion
+爆=bao
+炸=zha
+
+# 挖掘  dig
+挖=wa
+掘=jue
+
+# 闪电  lightning
+闪=shan
+电=dian
+
+# 附魔  enchant  (附 same pinyin as 符 — both map to fu)
+附=fu
+
+# 清除效果  dispel
+清=qing
+除=chu
+效=xiao
+
+# 减速 / 加速  slowness / haste
+减=jian
+速=su
+加=jia
+
+# 力量  strength
+量=liang
+
+# 虚弱  weakness
+虚=xu
+弱=ruo
+
+# 毒素  poison
+毒=du
+素=su
+
+# 凋零效果  wither effect
+零=ling
+
+# 重力  gravity
+重=zhong
+
+# 触碰  touch
+触=chu
+碰=peng
+
+# 投射  projectile
+投=tou
+射=she
+
+# 范围  area of effect
+范=fan
+围=wei
+
+# 光线  beam
+线=xian
+
+# 延迟  delay
+延=yan
+迟=chi
+
+# 自身  self
+自=zi
+身=shen
+
+# 瞄准  target
+瞄=miao
+准=zhun
+
+# 振幅  amplify
+振=zhen
+幅=fu
+
+# 穿透  pierce
+穿=chuan
+透=tou
+
+# 精确  accuracy
+精=jing
+确=que
+
+# 计时  duration
+计=ji
+时=shi
+
+# 分裂  split
+裂=lie
+
+# 弹跳  bounce
+弹=dan
+跳=tiao
+
+# 飞行  fly
+飞=fei
+
+# 风  wind / gust
+风=feng
+
+# 移动  move
+移=yi
+
+# 控制  control
+控=kong
+制=zhi
+
+# 圈  circle / loop
+圈=quan
+
+# 导向  guide
+导=dao
+向=xiang
+
+# 聚焦  focus
+聚=ju
+焦=jiao
+
+# 分裂 / 分身  split / clone
+分=fen
+
+# ── General Search Terms ─────────────────────────────────────────────────────
+
+# 命  life/name
+命=ming
+
+# 法术  spell
+法=fa
+术=shu
+
+# 师  master
+师=shi
+
+# 解析  resolve
+解=jie
+析=xi
+
+# 知识  knowledge
+知=zhi
+识=shi
+
+# 真理  truth
+真=zhen
+理=li
+
+# 纠缠  entanglement
+纠=jiu
+缠=chan
+
+# 复杂度  complexity
+复=fu
+杂=za
+度=du
+
+# 研究  research
+研=yan
+究=jiu
+
+# 发现  discover
+现=xian
+
+# 目标  target
+目=mu
+标=biao
+
+# 效果  effect
+# 效 already above; 果 already in hardcoded table
+
+# 类型  type
+类=lei
+型=xing
+
+# 种类  category
+种=zhong
