@@ -1,0 +1,111 @@
+{
+  "multipart": [
+    {
+      "when": { "OR": [
+        { "part": "center", "tier": "0" },
+        { "part": "center", "tier": "1" },
+        { "part": "center", "tier": "2" },
+        { "part": "center", "tier": "3" },
+        { "part": "center", "tier": "4" }
+      ] },
+      "apply": { "model": "ars_odyssey:block/resonance_nexus_core_center" }
+    },
+    {
+      "when": { "part": "center", "tier": "5" },
+      "apply": { "model": "ars_odyssey:block/resonance_nexus_core_final_center" }
+    },
+    {
+      "when": { "OR": [
+        { "part": "north", "tier": "0" },
+        { "part": "north", "tier": "1" },
+        { "part": "north", "tier": "2" },
+        { "part": "north", "tier": "3" },
+        { "part": "north", "tier": "4" }
+      ] },
+      "apply": { "model": "ars_odyssey:block/resonance_nexus_core_edge", "y": 0 }
+    },
+    {
+      "when": { "OR": [
+        { "part": "east", "tier": "0" },
+        { "part": "east", "tier": "1" },
+        { "part": "east", "tier": "2" },
+        { "part": "east", "tier": "3" },
+        { "part": "east", "tier": "4" }
+      ] },
+      "apply": { "model": "ars_odyssey:block/resonance_nexus_core_edge", "y": 90 }
+    },
+    {
+      "when": { "OR": [
+        { "part": "south", "tier": "0" },
+        { "part": "south", "tier": "1" },
+        { "part": "south", "tier": "2" },
+        { "part": "south", "tier": "3" },
+        { "part": "south", "tier": "4" }
+      ] },
+      "apply": { "model": "ars_odyssey:block/resonance_nexus_core_edge", "y": 180 }
+    },
+    {
+      "when": { "OR": [
+        { "part": "west", "tier": "0" },
+        { "part": "west", "tier": "1" },
+        { "part": "west", "tier": "2" },
+        { "part": "west", "tier": "3" },
+        { "part": "west", "tier": "4" }
+      ] },
+      "apply": { "model": "ars_odyssey:block/resonance_nexus_core_edge", "y": 270 }
+    },
+    {
+      "when": { "OR": [
+        { "part": "north_west", "tier": "0" },
+        { "part": "north_west", "tier": "1" },
+        { "part": "north_west", "tier": "2" },
+        { "part": "north_west", "tier": "3" },
+        { "part": "north_west", "tier": "4" }
+      ] },
+      "apply": { "model": "ars_odyssey:block/resonance_nexus_core_corner", "y": 0 }
+    },
+    {
+      "when": { "OR": [
+        { "part": "north_east", "tier": "0" },
+        { "part": "north_east", "tier": "1" },
+        { "part": "north_east", "tier": "2" },
+        { "part": "north_east", "tier": "3" },
+        { "part": "north_east", "tier": "4" }
+      ] },
+      "apply": { "model": "ars_odyssey:block/resonance_nexus_core_corner", "y": 90 }
+    },
+    {
+      "when": { "OR": [
+        { "part": "south_east", "tier": "0" },
+        { "part": "south_east", "tier": "1" },
+        { "part": "south_east", "tier": "2" },
+        { "part": "south_east", "tier": "3" },
+        { "part": "south_east", "tier": "4" }
+      ] },
+      "apply": { "model": "ars_odyssey:block/resonance_nexus_core_corner", "y": 180 }
+    },
+    {
+      "when": { "OR": [
+        { "part": "south_west", "tier": "0" },
+        { "part": "south_west", "tier": "1" },
+        { "part": "south_west", "tier": "2" },
+        { "part": "south_west", "tier": "3" },
+        { "part": "south_west", "tier": "4" }
+      ] },
+      "apply": { "model": "ars_odyssey:block/resonance_nexus_core_corner", "y": 270 }
+    },
+    {
+      "when": { "OR": [
+        { "part": "north", "tier": "5" },
+        { "part": "east", "tier": "5" },
+        { "part": "south", "tier": "5" },
+        { "part": "west", "tier": "5" },
+        { "part": "north_west", "tier": "5" },
+        { "part": "north_east", "tier": "5" },
+        { "part": "south_east", "tier": "5" },
+        { "part": "south_west", "tier": "5" }
+      ] },
+      "apply": { "model": "ars_odyssey:block/resonance_nexus_core_final_satellite" }
+    }
+  ]
+}

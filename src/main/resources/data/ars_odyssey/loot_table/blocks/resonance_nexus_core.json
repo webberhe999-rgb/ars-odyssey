@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "ars_odyssey:resonance_nexus_core",
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "ars_odyssey:resonance_nexus_core",
+              "properties": {
+                "part": "center"
+              }
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ]
+    }
+  ]
+}

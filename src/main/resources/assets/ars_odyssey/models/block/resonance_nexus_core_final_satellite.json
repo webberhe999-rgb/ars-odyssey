@@ -1,0 +1,7 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "ars_odyssey:block/resonance_nexus_glow_vibrant"
+  },
+  "elements": []
+}

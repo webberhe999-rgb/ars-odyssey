@@ -1,0 +1,18 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "crystal": "ars_odyssey:block/resonance_nexus_crystal_vibrant",
+    "rune": "ars_odyssey:block/resonance_nexus_rune_vibrant",
+    "glow": "ars_odyssey:block/resonance_nexus_glow_vibrant",
+    "particle": "ars_odyssey:block/resonance_nexus_crystal_vibrant"
+  },
+  "elements": [
+    { "from": [2, 2, 2], "to": [14, 14, 14], "rotation": { "origin": [8, 8, 8], "axis": "y", "angle": 45, "rescale": true }, "faces": { "up": { "texture": "#glow" }, "down": { "texture": "#crystal" }, "north": { "texture": "#crystal" }, "south": { "texture": "#crystal" }, "west": { "texture": "#crystal" }, "east": { "texture": "#crystal" } } },
+    { "from": [0.5, 7.3, 7.3], "to": [15.5, 8.7, 8.7], "faces": { "up": { "texture": "#glow" }, "down": { "texture": "#glow" }, "north": { "texture": "#glow" }, "south": { "texture": "#glow" }, "west": { "texture": "#glow" }, "east": { "texture": "#glow" } } },
+    { "from": [7.3, 0.5, 7.3], "to": [8.7, 15.5, 8.7], "faces": { "up": { "texture": "#glow" }, "down": { "texture": "#glow" }, "north": { "texture": "#glow" }, "south": { "texture": "#glow" }, "west": { "texture": "#glow" }, "east": { "texture": "#glow" } } },
+    { "from": [7.3, 7.3, 0.5], "to": [8.7, 8.7, 15.5], "faces": { "up": { "texture": "#glow" }, "down": { "texture": "#glow" }, "north": { "texture": "#glow" }, "south": { "texture": "#glow" }, "west": { "texture": "#glow" }, "east": { "texture": "#glow" } } }
+  ],
+  "display": {
+    "fixed": { "rotation": [0, 0, 0], "translation": [0, 0, 0], "scale": [1.0, 1.0, 1.0] }
+  }
+}

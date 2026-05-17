@@ -1,0 +1,13 @@
+package com.swvague.ars_odyssey.archive.runtime;
+
+public enum ArchiveDirtyReason {
+    CORE_BOUND,
+    LEDGER_CHANGED,
+    PROVISION_RULE_CHANGED,
+    ACCESS_MODE_CHANGED,
+    SOURCE_NETWORK_CHANGED,
+    RESONANCE_CHANGED,
+    TOPOLOGY_CHANGED,
+    DIMENSION_CHANGED,
+    EXTERNAL_COMPAT_CHANGED
+}

@@ -1,0 +1,17 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "base": "ars_odyssey:block/resonance_nexus_base_vibrant",
+    "rune": "ars_odyssey:block/resonance_nexus_rune_vibrant",
+    "glow": "ars_odyssey:block/resonance_nexus_glow_vibrant",
+    "particle": "ars_odyssey:block/resonance_nexus_base_vibrant"
+  },
+  "elements": [
+    { "from": [1, 0, 0], "to": [15, 2, 16], "faces": { "down": { "texture": "#base" }, "up": { "texture": "#rune" }, "north": { "texture": "#base" }, "south": { "texture": "#base" }, "west": { "texture": "#base" }, "east": { "texture": "#base" } } },
+    { "from": [3, 2, 4], "to": [13, 4, 16], "faces": { "up": { "texture": "#rune" }, "north": { "texture": "#base" }, "south": { "texture": "#glow" }, "west": { "texture": "#base" }, "east": { "texture": "#base" } } },
+    { "from": [5, 4, 8], "to": [11, 6, 14], "faces": { "up": { "texture": "#glow" }, "north": { "texture": "#rune" }, "south": { "texture": "#rune" }, "west": { "texture": "#rune" }, "east": { "texture": "#rune" } } },
+    { "from": [7, 5, 1], "to": [9, 6, 16], "faces": { "up": { "texture": "#glow" }, "down": { "texture": "#glow" }, "north": { "texture": "#glow" }, "south": { "texture": "#glow" }, "west": { "texture": "#glow" }, "east": { "texture": "#glow" } } },
+    { "from": [2, 3, 6], "to": [4, 5, 12], "faces": { "up": { "texture": "#rune" }, "north": { "texture": "#base" }, "south": { "texture": "#base" }, "west": { "texture": "#base" }, "east": { "texture": "#glow" } } },
+    { "from": [12, 3, 6], "to": [14, 5, 12], "faces": { "up": { "texture": "#rune" }, "north": { "texture": "#base" }, "south": { "texture": "#base" }, "west": { "texture": "#glow" }, "east": { "texture": "#base" } } }
+  ]
+}

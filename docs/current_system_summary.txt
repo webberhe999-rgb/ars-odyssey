@@ -14,7 +14,7 @@ Versions:
 
 Odyssey Spell Book registration:
 - Registered in com.example.ars_odyssey.registry.ModRegistry.
-- Registry name: ars_odyssey:odyssey_spell_book.
+- Registry name: ars_odyssey:odyssey_boundless_spell_book.
 - Deferred holder: ModRegistry.ODYSSEY_SPELL_BOOK.
 - Item class: com.example.ars_odyssey.item.OdysseySpellBook.
 - Current tier: SpellTier.CREATIVE.

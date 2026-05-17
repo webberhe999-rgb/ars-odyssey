@@ -1,9 +1,13 @@
 {
   "required": true,
-  "package": "com.example.ars_odyssey.mixin",
+  "package": "com.swvague.ars_odyssey.mixin",
   "compatibilityLevel": "JAVA_21",
   "refmap": "ars_odyssey.refmap.json",
-  "mixins": [],
+  "mixins": [
+    "EntityProjectileSpellMixin",
+    "EntityOrbitProjectileMixin",
+    "MethodProjectileMixin"
+  ],
   "client": [
     "GuiSpellBookMixin"
   ],

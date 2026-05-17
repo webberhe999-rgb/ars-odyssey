@@ -1,0 +1,16 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "crystal": "ars_odyssey:block/resonance_nexus_crystal_vibrant",
+    "glow": "ars_odyssey:block/resonance_nexus_glow_vibrant",
+    "particle": "ars_odyssey:block/resonance_nexus_crystal_vibrant"
+  },
+  "elements": [
+    { "from": [6.4, 1, 6.4], "to": [9.6, 15, 9.6], "rotation": { "origin": [8, 8, 8], "axis": "y", "angle": 45, "rescale": true }, "faces": { "up": { "texture": "#glow" }, "down": { "texture": "#crystal" }, "north": { "texture": "#crystal" }, "south": { "texture": "#crystal" }, "west": { "texture": "#crystal" }, "east": { "texture": "#crystal" } } },
+    { "from": [7.15, 0, 7.15], "to": [8.85, 16, 8.85], "rotation": { "origin": [8, 8, 8], "axis": "y", "angle": 45, "rescale": true }, "faces": { "up": { "texture": "#glow" }, "down": { "texture": "#glow" }, "north": { "texture": "#glow" }, "south": { "texture": "#glow" }, "west": { "texture": "#glow" }, "east": { "texture": "#glow" } } }
+  ],
+  "display": {
+    "ground": { "rotation": [0, 0, 0], "translation": [0, 1, 0], "scale": [0.34, 0.34, 0.34] },
+    "fixed": { "rotation": [0, 0, 0], "translation": [0, 0, 0], "scale": [0.5, 0.5, 0.5] }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "ambientocclusion": false,
+  "textures": {
+    "base": "ars_odyssey:block/resonance_nexus_base_vibrant",
+    "rune": "ars_odyssey:block/resonance_nexus_rune_vibrant",
+    "crystal": "ars_odyssey:block/resonance_nexus_crystal_vibrant",
+    "glow": "ars_odyssey:block/resonance_nexus_glow_vibrant",
+    "particle": "ars_odyssey:block/resonance_nexus_base_vibrant"
+  },
+  "elements": [
+    { "from": [1, 0, 1], "to": [15, 2, 15], "faces": { "down": { "texture": "#base" }, "up": { "texture": "#rune" }, "north": { "texture": "#base" }, "south": { "texture": "#base" }, "west": { "texture": "#base" }, "east": { "texture": "#base" } } },
+    { "from": [3, 2, 3], "to": [13, 5, 13], "faces": { "up": { "texture": "#glow" }, "north": { "texture": "#base" }, "south": { "texture": "#base" }, "west": { "texture": "#base" }, "east": { "texture": "#base" } } },
+    { "from": [5, 5, 5], "to": [11, 7, 11], "faces": { "up": { "texture": "#rune" }, "north": { "texture": "#rune" }, "south": { "texture": "#rune" }, "west": { "texture": "#rune" }, "east": { "texture": "#rune" } } },
+    { "from": [6, 7, 6], "to": [10, 15, 10], "rotation": { "origin": [8, 11, 8], "axis": "y", "angle": 45, "rescale": true }, "faces": { "up": { "texture": "#glow" }, "down": { "texture": "#crystal" }, "north": { "texture": "#crystal" }, "south": { "texture": "#crystal" }, "west": { "texture": "#crystal" }, "east": { "texture": "#crystal" } } },
+    { "from": [7, 15, 7], "to": [9, 18, 9], "rotation": { "origin": [8, 16.5, 8], "axis": "y", "angle": 45, "rescale": true }, "faces": { "up": { "texture": "#glow" }, "down": { "texture": "#crystal" }, "north": { "texture": "#crystal" }, "south": { "texture": "#crystal" }, "west": { "texture": "#crystal" }, "east": { "texture": "#crystal" } } },
+    { "from": [2, 4, 7], "to": [14, 5, 9], "rotation": { "origin": [8, 4.5, 8], "axis": "y", "angle": 45, "rescale": true }, "faces": { "up": { "texture": "#glow" }, "down": { "texture": "#glow" }, "north": { "texture": "#glow" }, "south": { "texture": "#glow" }, "west": { "texture": "#glow" }, "east": { "texture": "#glow" } } },
+    { "from": [7, 4, 2], "to": [9, 5, 14], "rotation": { "origin": [8, 4.5, 8], "axis": "y", "angle": 45, "rescale": true }, "faces": { "up": { "texture": "#glow" }, "down": { "texture": "#glow" }, "north": { "texture": "#glow" }, "south": { "texture": "#glow" }, "west": { "texture": "#glow" }, "east": { "texture": "#glow" } } }
+  ]
+}
